@@ -14,7 +14,7 @@ public class Selection {
         }
     }
 
-    public static void selectionSort(int[] a) {
+    private static void selectionSort(int[] a) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int min = i;

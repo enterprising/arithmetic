@@ -13,7 +13,7 @@ public class Insertion {
         }
     }
 
-    public static void insertSort(int[] a) {
+    private static void insertSort(int[] a) {
         int n = a.length;
         for (int i = 1; i < n; i++) {
             for (int j = i; j > 0; j--) {

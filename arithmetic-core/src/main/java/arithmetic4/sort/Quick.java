@@ -13,7 +13,7 @@ public class Quick {
         }
     }
 
-    public static void sort(int[] a) {
+    private static void sort(int[] a) {
         sort(a, 0, a.length - 1);
     }
 
