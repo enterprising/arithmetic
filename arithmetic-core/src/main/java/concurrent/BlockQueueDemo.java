@@ -10,12 +10,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class BlockQueueDemo {
 
     private Lock lock = new ReentrantLock();
-    private Condition empty = lock.newCondition();
-    private Condition full = lock.newCondition();
+    private Condition notEmpty = lock.newCondition();
+    private Condition notFull = lock.newCondition();
 
     private int[] data = null;
 
-    private int putIndex, takeIndex, count;
+    private int putIndex;   //数据存的位置
+    private int takeIndex;  //数据取的位置
+    private int count; // data中存储数据的数量
 
     BlockQueueDemo(int size) {
         data = new int[size];
@@ -27,13 +29,13 @@ public class BlockQueueDemo {
         try {
             // 队列满了，需要等空了才行
             while (data.length == count) {
-                full.await();
+                notFull.await();
             }
             data[putIndex] = t;
             if (++putIndex == data.length)
                 putIndex = 0;
-            count--;
-            empty.signal();
+            count++;
+            notEmpty.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -46,13 +48,13 @@ public class BlockQueueDemo {
         lock.lock();
         try {
             while (count == 0) {
-                empty.await();
+                notEmpty.await();
             }
             t = data[takeIndex];
             if (++takeIndex == data.length)
                 takeIndex = 0;
-            count++;
-            full.signal();
+            count--;
+            notFull.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -65,9 +67,10 @@ public class BlockQueueDemo {
         BlockQueueDemo blockQueueDemo = new BlockQueueDemo(10);
         blockQueueDemo.put(4);
         int a = blockQueueDemo.take();
-        blockQueueDemo.take();
         blockQueueDemo.put(5);
+        int b = blockQueueDemo.take();
         System.out.println(a);
+        System.out.println(b);
     }
 
 }
