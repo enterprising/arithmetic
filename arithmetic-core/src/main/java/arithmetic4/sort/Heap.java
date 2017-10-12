@@ -15,7 +15,7 @@ public class Heap {
 
     private static void heap(int[] a) {
         int n = a.length;
-        // 调整序列的前半部分元素，调整完之后第一个元素是序列的最大的元素
+        // 这个过程叫做建堆。当前n/2个都调整好了，后面的本来就全是叶子节点。所以这时候已经满足最大/最小堆了
         for (int i = n / 2 - 1; i >= 0; i--) {
             adjust(a, i, n);
         }
