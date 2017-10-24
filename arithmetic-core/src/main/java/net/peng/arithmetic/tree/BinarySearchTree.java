@@ -121,7 +121,8 @@ public class BinarySearchTree {
             free(tmp);
         } else {
             // 最复杂的是这里，左右子树都有。这里可能需要调整
-            // 找到离当前node节点对应元素且最近的节点 target（左子树的最右节点，或者右子树最左节点）
+            // 找到离当前node节点对应元素且最近的节点 target
+            // （左子树的最右节点，或者右子树最左节点。任意选一个都行，这里选的是左子树的最右节点。但一般是选右子树的最左节点）
             // 将node节点元素替换成target元素的节点，将target节点删除
             tmp = node;  //tmp是node的父节点
             TreeNode target = node.left; //找左子树的最大节点
