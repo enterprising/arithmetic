@@ -25,12 +25,12 @@ public class JDBCDemo {
     }
 
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
-        String serverName = "localhost";
-        String database = "daltestdb";
+        String serverName = "";
+        String database = "";
         String url = "jdbc:mysql://" + serverName + "/" + database;
 
         // 数据配置用户和密码
-        String user = "root";
+        String user = "";
         String password = "";
 
         return DriverManager.getConnection(url, user, password);
