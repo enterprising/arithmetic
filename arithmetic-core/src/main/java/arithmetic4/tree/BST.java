@@ -1,4 +1,4 @@
-package arithmetic4.bst;
+package arithmetic4.tree;
 
 /**
  * 二叉查找树的实现
