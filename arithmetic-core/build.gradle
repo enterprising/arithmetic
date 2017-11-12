@@ -15,5 +15,7 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
     // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
     compile group: 'com.rabbitmq', name: 'amqp-client', version: '4.2.0'
+    // https://mvnrepository.com/artifact/org.apache.thrift/libthrift
+    compile group: 'org.apache.thrift', name: 'libthrift', version: '0.10.0', ext: 'pom'
 
 }
