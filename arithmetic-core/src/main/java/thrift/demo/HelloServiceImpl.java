@@ -1,6 +1,7 @@
 package thrift.demo;
 
 
+import org.apache.thrift.TException;
 import thrift.demo.Hello.Iface;
 
 public class HelloServiceImpl implements Iface {
