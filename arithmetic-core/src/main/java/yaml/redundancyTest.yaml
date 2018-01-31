@@ -1,0 +1,24 @@
+---
+group: base_halo_group
+skip: true
+allow:
+     - '*.*'
+---
+group: xxx_1dasda
+skip: true
+allow:
+- scenes.*
+---
+group: xxx_group
+skip: true
+allow:
+- 'scenes.*'
+---
+group: x_xxx-zeus_x_group
+skip: true
+allow:
+     - '*.teststr'
+---
+group: x_mobile_group
+allow:
+- xx.sadasdstr
