@@ -19,6 +19,8 @@ dependencies {
     compile group: 'org.apache.thrift', name: 'libthrift', version: '0.10.0'
     // https://mvnrepository.com/artifact/org.yaml/snakeyaml
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.15'
+    // https://mvnrepository.com/artifact/com.mchange/c3p0
+    compile group: 'com.mchange', name: 'c3p0', version: '0.9.5.2'
 
 
 }
