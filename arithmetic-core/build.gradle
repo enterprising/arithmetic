@@ -21,6 +21,9 @@ dependencies {
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.15'
     // https://mvnrepository.com/artifact/com.mchange/c3p0
     compile group: 'com.mchange', name: 'c3p0', version: '0.9.5.2'
+    // https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api
+    // 理论上要用这个：provided group: 'javax.websocket', name: 'javax.websocket-api', version: '1.0'
+    compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.0'
 
 
 }
