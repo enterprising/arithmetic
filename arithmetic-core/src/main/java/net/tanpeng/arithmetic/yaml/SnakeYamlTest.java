@@ -15,7 +15,7 @@ public class SnakeYamlTest {
     public static List<Schema> schemas = new ArrayList<>();
 
     public static void main(String[] args) {
-        loadCfg("./arithmetic-core/src/main/java/yaml/test.yaml");
+        loadCfg("./arithmetic-core/src/main/java/net/tanpeng/arithmetic/yaml/test.yaml");
         for (Schema s : schemas) {
             System.out.println(s);
         }

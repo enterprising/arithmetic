@@ -12,9 +12,9 @@ allow:
 group: xxx_group
 skip: true
 allow:
-- 'scenes.*'
+- 'sss.*'
 ---
-group: x_xxx-zeus_x_group
+group: x_xxx_x_group
 skip: true
 allow:
      - '*.teststr'
