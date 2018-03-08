@@ -1,4 +1,4 @@
-package net.tanpeng.java.thrift.demo;
+package net.tanpeng.frame.thrift.demo;
 
 
 import org.apache.thrift.TException;

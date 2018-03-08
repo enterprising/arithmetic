@@ -1,4 +1,4 @@
-package net.tanpeng.java.util;
+package net.tanpeng.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 public class FindBirthday {
 
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("./src/main/java/net/peng/arithmetic/util/a.txt");
+        Path path = Paths.get("./src/main/java/net/peng/arithmetic/utils/a.txt");
         Files.readAllLines(path).forEach(e->{
             System.out.println(e.substring(6,14));
         });

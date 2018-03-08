@@ -1,4 +1,4 @@
-package net.tanpeng.java.jdbc;
+package net.tanpeng.database.jdbc;
 
 import java.sql.*;
 

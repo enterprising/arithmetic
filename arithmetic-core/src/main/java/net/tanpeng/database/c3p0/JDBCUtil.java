@@ -1,4 +1,4 @@
-package net.tanpeng.java.c3p0;
+package net.tanpeng.database.c3p0;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

@@ -1,4 +1,4 @@
-package net.tanpeng.java.c3p0;
+package net.tanpeng.database.c3p0;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

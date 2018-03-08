@@ -1,4 +1,4 @@
-package net.tanpeng.java.util;
+package net.tanpeng.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;

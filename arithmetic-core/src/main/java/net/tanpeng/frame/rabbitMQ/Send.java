@@ -1,4 +1,4 @@
-package net.tanpeng.java.rabbitMQ;
+package net.tanpeng.frame.rabbitMQ;
 
 import com.rabbitmq.client.*;
 

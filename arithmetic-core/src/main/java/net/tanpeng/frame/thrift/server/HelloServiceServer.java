@@ -1,11 +1,11 @@
-package net.tanpeng.java.thrift.server;
+package net.tanpeng.frame.thrift.server;
 
-import net.tanpeng.java.thrift.demo.HelloServiceImpl;
+import net.tanpeng.frame.thrift.demo.HelloServiceImpl;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TTransportException;
-import net.tanpeng.java.thrift.demo.Hello;
+import net.tanpeng.frame.thrift.demo.Hello;
 
 public class HelloServiceServer {
     /**
