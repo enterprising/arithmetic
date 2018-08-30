@@ -33,11 +33,11 @@ public class CalculateGPA {
             zongxuefen += Double.parseDouble(list[6]);
 
 
-            if (list[8].equals("优秀"))
+            if ("优秀".equals(list[8]))
                 list[8] = String.valueOf(95);
-            else if (list[8].equals("良好"))
+            else if ("良好".equals(list[8]))
                 list[8] = String.valueOf(85);
-            else if (list[8].equals("中等"))
+            else if ("中等".equals(list[8]))
                 list[8] = String.valueOf(75);
             avg += Double.parseDouble(list[8]);
             count++;
