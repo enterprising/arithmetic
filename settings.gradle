@@ -1,3 +1,4 @@
 rootProject.name = 'arithmetic'
 include 'arithmetic-core'
+include 'arithmetic-netty'
 
