@@ -3,22 +3,29 @@ package net.tanpeng.netty.discardServer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.CharsetUtil;
 
 /**
  * Created by peng.tan on 2018/9/5.
  */
 public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
+
     /**
-     * 当客户端收到新的数据时，这个方法会在收到消息时被调用
+     * 每当从客户端收到新的数据时，这个方法会在收到消息时被调用
+     *
      * @param ctx
      * @param msg
      * @throws Exception
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        // 默默地丢弃收到的数据
-        ((ByteBuf) msg).release();
-        super.channelRead(ctx, msg);
+        ByteBuf in = (ByteBuf) msg;
+
+        // 打印收到的数据
+        System.out.println(in.toString(CharsetUtil.UTF_8));
+
+        // 丢弃收到的数据
+        in.release();
     }
 
     @Override
@@ -28,3 +35,10 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 }
+
+/**
+ * 说明：
+ * 1、继承自ChannelInboundHandlerAdapter，这个类实现了ChannelInboundHandler接口；
+ * ChannelInboundHandler提供了很多事件处理的接口方法，可以覆盖这些方法。
+ * 现在仅需要继承ChannelInboundHandlerAdapter类，而不是自己去实现接口方法
+ */
