@@ -80,5 +80,5 @@ public class DiscardServer {
  *      option() 是提供给NioServerSocketChannel 用来接收进来的连接。
  *      childOption() 是提供给由父管道 ServerChannel 接收到的连接，在这个例子中也是 NioServerSocketChannel。
  *
- *  附：测试 telnet 127.0.0.1:8000 （mac下没有telnet可以先安装）
+ *  附：测试 telnet 127.0.0.1 8000 （mac下没有telnet可以先安装, 不能加冒号）
  */
