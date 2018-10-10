@@ -21,11 +21,15 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf) msg;
 
-        // 打印收到的数据
-        System.out.println(in.toString(CharsetUtil.UTF_8));
+//        // 1.丢弃收到的数据
+//        in.release();
+//
+//        // 2. 打印收到的数据
+//        System.out.println(in.toString(CharsetUtil.UTF_8));
 
-        // 丢弃收到的数据
-        in.release();
+        // 3. echo server
+        ctx.write(msg); // (1)
+        ctx.flush(); // (2)
     }
 
     @Override
