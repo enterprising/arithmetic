@@ -3,9 +3,7 @@ package net.tanpeng.java.yaml;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -20,6 +18,19 @@ public class SnakeYamlTest {
             System.out.println(s);
         }
     }
+
+    // 写入文件
+    public void testDumpWriter() throws IOException {
+        Map<String, Object> data = new HashMap<>();
+        data.put("name", "Silenthand Olleander");
+        data.put("race", "Human");
+        data.put("traits", new String[] { "ONE_HAND", "ONE_EYE" });
+
+        Yaml yaml = new Yaml();
+        FileWriter writer = new FileWriter("/path/to/file.yaml");
+        yaml.dump(data, writer);
+    }
+
 
     public static List<Schema> load(InputStream fileInputStream) {
         Yaml yaml = new Yaml(new Constructor(Schema.class));
