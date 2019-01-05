@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import net.tanpeng.netty.pojotime.TimeDecoder;
 
 /**
  * 在 Netty 中,编写服务端和客户端最大的并且唯一不同的使用了不同的BootStrap 和 Channel的实现.
@@ -36,12 +37,12 @@ public class Client {
         b.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             public void initChannel(SocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new TimeClientHandler());
+                ch.pipeline().addLast(new TimeDecoder(), new TimeClientHandler());
             }
         });
 
         // 启动客户端 。 客户端用connect，服务端是bind()
-        ChannelFuture f = b.connect(host,port).sync();
+        ChannelFuture f = b.connect(host, port).sync();
 
         // 等待连接关闭
         f.channel().closeFuture().sync();

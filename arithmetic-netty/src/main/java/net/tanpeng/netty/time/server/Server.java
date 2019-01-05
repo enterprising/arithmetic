@@ -8,17 +8,18 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import net.tanpeng.netty.pojotime.TimeDecoder;
+import net.tanpeng.netty.pojotime.TimeEncoder;
 
 /**
- *
  * 在这个部分被实现的协议是 TIME 协议。
  * 和之前的例子不同的是在不接受任何请求时他会发送一个含32位的整数的消息，并且一旦消息发送就会立即关闭连接。
  * 在这个例子中，你会学习到如何构建和发送一个消息，然后在完成时关闭连接。
- *
+ * <p>
  * 为了测试我们的time服务如我们期望的一样工作，你可以使用 UNIX 的 rdate 命令
  * $ rdate -o <port> -p <host>
  * Port 是你在main()函数中指定的端口，host 使用 localhost 就可以了。
- *
+ * <p>
  * Created by peng.tan on 2019/1/5.
  */
 public class Server {
@@ -47,7 +48,7 @@ public class Server {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new TimeServerHandler());
+                            ch.pipeline().addLast(new TimeEncoder(), new TimeServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
