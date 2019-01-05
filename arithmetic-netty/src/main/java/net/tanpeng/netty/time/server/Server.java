@@ -1,4 +1,4 @@
-package net.tanpeng.netty.discardServer;
+package net.tanpeng.netty.time.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -10,14 +10,21 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 丢弃任何进入的数据，这个类用于启动那个handler
- * 附：测试 telnet 127.0.0.1 8000 （mac下没有telnet可以先安装, 不能加冒号）
- * Created by peng.tan on 2018/9/5.
+ *
+ * 在这个部分被实现的协议是 TIME 协议。
+ * 和之前的例子不同的是在不接受任何请求时他会发送一个含32位的整数的消息，并且一旦消息发送就会立即关闭连接。
+ * 在这个例子中，你会学习到如何构建和发送一个消息，然后在完成时关闭连接。
+ *
+ * 为了测试我们的time服务如我们期望的一样工作，你可以使用 UNIX 的 rdate 命令
+ * $ rdate -o <port> -p <host>
+ * Port 是你在main()函数中指定的端口，host 使用 localhost 就可以了。
+ *
+ * Created by peng.tan on 2019/1/5.
  */
-public class DiscardServer {
+public class Server {
     private int port;
 
-    public DiscardServer(int port) {
+    public Server(int port) {
         this.port = port;
     }
 
@@ -40,7 +47,7 @@ public class DiscardServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new DiscardServerHandler());
+                            ch.pipeline().addLast(new TimeServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
@@ -68,7 +75,6 @@ public class DiscardServer {
         } else {
             port = 8000;
         }
-        new DiscardServer(port).run();
+        new Server(port).run();
     }
 }
-

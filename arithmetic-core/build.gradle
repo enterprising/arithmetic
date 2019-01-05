@@ -24,6 +24,11 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api
     // 理论上要用这个：provided group: 'javax.websocket', name: 'javax.websocket-api', version: '1.0'
     compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.0'
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    // https://mvnrepository.com/artifact/io.netty/netty-all
+    compile group: 'io.netty', name: 'netty-all', version: '4.0.42.Final'
+
 
 
 }

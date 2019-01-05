@@ -3,7 +3,6 @@ package net.tanpeng.netty.discardServer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
 
 /**
  * Created by peng.tan on 2018/9/5.
