@@ -1,4 +1,4 @@
-package net.tanpeng.netty.httpserver;
+package net.tanpeng.netty.httpserver.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -13,14 +13,23 @@ public class Server {
     private EventLoopGroup eventLoopGroup = null;
     private Channel channel = null;
 
-    public void start(int port) throws InterruptedException {
+    private void start(int port) throws InterruptedException {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
         ServerBootstrap bootstrap = new ServerBootstrap().group(eventLoopGroup).childHandler(new HttpServerInitializer()).channel(NioServerSocketChannel.class);
         channel = bootstrap.bind(port).sync().channel();
     }
 
-    public void sync() throws InterruptedException {
+    private void sync() throws InterruptedException {
         channel.closeFuture().sync();
     }
 
+    public void stop() {
+        eventLoopGroup.shutdownGracefully();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Server server = new Server();
+        server.start(3000);
+        server.sync();
+    }
 }

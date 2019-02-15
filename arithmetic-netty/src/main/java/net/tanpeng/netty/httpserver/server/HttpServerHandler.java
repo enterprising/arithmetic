@@ -1,4 +1,4 @@
-package net.tanpeng.netty.httpserver;
+package net.tanpeng.netty.httpserver.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
