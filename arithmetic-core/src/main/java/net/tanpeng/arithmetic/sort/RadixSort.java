@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.arithmetic4.sort;
+package net.tanpeng.arithmetic.sort;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

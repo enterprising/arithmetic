@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.arithmetic4.sort;
+package net.tanpeng.arithmetic.sort;
 
 /**
  * 排序用的 工具类，主要包括比较元素大小、交换元素顺序等

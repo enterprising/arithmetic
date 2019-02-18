@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.arithmetic4.sort;
+package net.tanpeng.arithmetic.sort;
 
 /**
  * Created by peng.tan on 17/10/9.
