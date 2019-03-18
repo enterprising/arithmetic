@@ -1,0 +1,19 @@
+学习了netty服务端启动的流程，简单来说就是：
+创建一个引导类，然后给它指定线程模型（也就是worker boss那个NioEventLoopGroup，用.group()加进去的），
+再指定IO模型（就是nio/io，用.channel(NioServerSocketChannel.class)加的)，
+连接进来之后的处理逻辑，
+然后再绑定端口，这样服务就起来了。
+
+还有，bind()方法是异步的，由于是异步的，因此是future，所以我们可以给它加监听来实现递增端口的功能
+
+最后学到了
+handler()方法
+attr() 方法
+childAttr() 方法
+childOption() 方法，这个是用来给每条连接设置一些TCP底层相关的属性
+option()方法 上面是给连接设置，这个是给channel设置的，最常用的是 serverBootstrap.option(ChanelOption.SO_BACKLOG,1024)，表示用来临时存放已完成三次握手的请求的队列的最大长度。可以适当调大，如果连接建立很频繁的话。
+
+
+客户端类似，方法是类似的
+区别主要在于，server的引导程序是ServerBootstrap，client是Bootstrap。
+而且不需要boss线程，直接 NioEventLoopGroup workerGroup 就行了
