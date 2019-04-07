@@ -1,4 +1,4 @@
-package com.juejin.netty.serverclient;
+package wechart;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;

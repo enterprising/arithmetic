@@ -1,4 +1,4 @@
-package com.juejin.netty.serverclient;
+package wechart;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
@@ -54,7 +54,6 @@ public class Server {
             byteBuf.writeBytes(bytes);
             return byteBuf;
         }
-
 
     }
 
