@@ -1,10 +1,13 @@
-package wechart.bean;
+package wechart.protocol;
+
+import lombok.Data;
 
 /**
  * Created by peng.tan on 2019/4/6.
  */
+@Data
 public class LoginRequestPacket extends Packet implements Command {
-    private Integer userId;
+    private String userId;
     private String username;
     private String password;
 

@@ -1,4 +1,4 @@
-package wechart.bean;
+package wechart.protocol;
 
 import lombok.Data;
 

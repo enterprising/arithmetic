@@ -14,7 +14,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/io.netty/netty-all
-    compile group: 'io.netty', name: 'netty-all', version: '4.0.42.Final'
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.6.Final'
 
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 

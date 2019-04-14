@@ -1,11 +1,11 @@
-package wechart.bean;
+package wechart.serialize;
 
 /**
  * Created by peng.tan on 2019/4/6.
  */
 public class JSONSerializer implements Serializer, SerializerAlgorithm {
     @Override
-    public byte getSerializerAlgorithm() {
+    public byte getSerializerAlogrithm() {
         return JSON;
     }
 

@@ -1,4 +1,4 @@
-package wechart.bean;
+package wechart.serialize;
 
 /**
  * Created by peng.tan on 2019/4/6.
@@ -15,7 +15,7 @@ public interface Serializer {
     /**
      * 获取序列化算法
      */
-    byte getSerializerAlgorithm();
+    byte getSerializerAlogrithm();
 
     /**
      * Java对象转换为二进制对象

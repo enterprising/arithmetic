@@ -1,4 +1,4 @@
-package wechart;
+package com.juejin.netty.serverclientchat;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;

@@ -1,4 +1,4 @@
-package wechart.bean;
+package wechart.serialize;
 
 /**
  * Created by peng.tan on 2019/4/6.
