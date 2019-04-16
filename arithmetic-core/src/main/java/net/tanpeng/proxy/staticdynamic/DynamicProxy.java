@@ -21,6 +21,7 @@ public class DynamicProxy implements InvocationHandler {
         calc.add(7, 6);
     }
 
+    // 代理类的真实对象
     private Object target;
 
     public DynamicProxy(Object target) {
