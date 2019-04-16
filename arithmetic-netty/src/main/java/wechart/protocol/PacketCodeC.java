@@ -1,9 +1,9 @@
-package wechart.serialize;
+package wechart.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import wechart.protocol.LoginRequestPacket;
-import wechart.protocol.Packet;
+import wechart.serialize.JSONSerializer;
+import wechart.serialize.Serializer;
 
 import java.util.HashMap;
 import java.util.Map;
