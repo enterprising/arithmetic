@@ -5,25 +5,22 @@ package wechart.serialize;
  */
 public interface Serializer {
 
-    /**
-     * json 序列化
-     */
-    byte JSON_SERIALIZER = 1;
-
     Serializer DEFAULT = new JSONSerializer();
 
     /**
-     * 获取序列化算法
+     * 序列化算法
+     *
+     * @return
      */
     byte getSerializerAlogrithm();
 
     /**
-     * Java对象转换为二进制对象
+     * java 对象转换成二进制
      */
     byte[] serialize(Object object);
 
     /**
-     * 二进制转换成Java对象
+     * 二进制转换成 java 对象
      */
     <T> T deserialize(Class<T> clazz, byte[] bytes);
 }

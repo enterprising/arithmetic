@@ -1,21 +1,23 @@
 package wechart.serialize;
 
-/**
- * Created by peng.tan on 2019/4/6.
- */
-public class JSONSerializer implements Serializer, SerializerAlgorithm {
+import com.alibaba.fastjson.JSON;
+
+public class JSONSerializer implements Serializer {
+
     @Override
     public byte getSerializerAlogrithm() {
-        return JSON;
+        return SerializerAlgorithm.JSON;
     }
 
     @Override
     public byte[] serialize(Object object) {
-        return com.alibaba.fastjson.JSON.toJSONBytes(object);
+
+        return JSON.toJSONBytes(object);
     }
 
     @Override
     public <T> T deserialize(Class<T> clazz, byte[] bytes) {
-        return com.alibaba.fastjson.JSON.parseObject(bytes, clazz);
+
+        return JSON.parseObject(bytes, clazz);
     }
 }

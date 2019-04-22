@@ -15,23 +15,27 @@ import java.util.Date;
  */
 public class Server {
 
+    private static final int PORT = 8000;
+
     public static void main(String[] args) {
         NioEventLoopGroup boosGroup = new NioEventLoopGroup();
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(boosGroup, workerGroup)
+        final ServerBootstrap serverBootstrap = new ServerBootstrap();
+        serverBootstrap
+                .group(boosGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 1024)
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childOption(ChannelOption.TCP_NODELAY, true)
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
-                    @Override
-                    protected void initChannel(NioSocketChannel ch) throws Exception {
-//                        ch.pipeline().addLast(new ServerHandler());
+                    protected void initChannel(NioSocketChannel ch) {
+                        ch.pipeline().addLast(new ServerHandler());
                     }
                 });
-        bind(serverBootstrap, 8000);
+
+
+        bind(serverBootstrap, PORT);
     }
 
     private static void bind(final ServerBootstrap serverBootstrap, final int port) {
