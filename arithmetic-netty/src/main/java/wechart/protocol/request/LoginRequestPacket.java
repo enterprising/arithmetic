@@ -1,8 +1,9 @@
-package wechart.protocol;
+package wechart.protocol.request;
 
 import lombok.Data;
+import wechart.protocol.Packet;
 
-import static wechart.protocol.Command.LOGIN_REQUEST;
+import static wechart.protocol.command.Command.LOGIN_REQUEST;
 
 /**
  * Created by peng.tan on 2019/4/6.

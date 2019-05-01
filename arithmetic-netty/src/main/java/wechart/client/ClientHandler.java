@@ -3,11 +3,14 @@ package wechart.client;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import wechart.protocol.LoginRequestPacket;
-import wechart.protocol.LoginResponsePacket;
+import wechart.protocol.request.LoginRequestPacket;
+import wechart.protocol.response.LoginResponsePacket;
 import wechart.protocol.Packet;
 import wechart.protocol.PacketCodeC;
+import wechart.protocol.response.MessageResponsePacket;
+import wechart.util.LoginUtil;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -41,9 +44,13 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
             if (loginResponsePacket.isSuccess()) {
                 System.out.println("客户端登陆成功！");
+                LoginUtil.markAsLogin(ctx.channel());
             } else {
                 System.out.println("客户端登陆失败，因为" + loginResponsePacket.getReason());
             }
+        } else if (packet instanceof MessageResponsePacket) {
+            MessageResponsePacket messageResponsePacket = (MessageResponsePacket) packet;
+            System.out.println(new Date() + ": 收到服务端的消息: " + messageResponsePacket.getMessage());
         }
     }
 }

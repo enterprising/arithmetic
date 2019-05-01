@@ -3,10 +3,12 @@ package wechart.server;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import wechart.protocol.LoginRequestPacket;
-import wechart.protocol.LoginResponsePacket;
+import wechart.protocol.request.LoginRequestPacket;
+import wechart.protocol.request.MessageRequestPacket;
+import wechart.protocol.response.LoginResponsePacket;
 import wechart.protocol.Packet;
 import wechart.protocol.PacketCodeC;
+import wechart.protocol.response.MessageResponsePacket;
 
 import java.util.Date;
 
@@ -36,9 +38,18 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 loginResponsePacket.setSuccess(false);
                 System.out.println(new Date() + ": 登陆失败！");
             }
-            // 相应登陆
+            // 响应登陆
             ByteBuf response = PacketCodeC.INSTANCE.encode(ctx.alloc(), loginResponsePacket);
             ctx.channel().writeAndFlush(response);
+        } else if (packet instanceof MessageRequestPacket) {
+            // 处理客户端发过来的消息
+            MessageRequestPacket messageRequestPacket = (MessageRequestPacket) packet;
+
+            MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
+            System.out.println(new Date() + ": 收到客户端消息： " + messageRequestPacket.getMessage());
+            messageResponsePacket.setMessage("服务端回复：[" + messageRequestPacket.getMessage() + "]");
+            ByteBuf responseByteBuf = PacketCodeC.INSTANCE.encode(ctx.alloc(), messageResponsePacket);
+            ctx.channel().writeAndFlush(responseByteBuf);
         }
 
 
