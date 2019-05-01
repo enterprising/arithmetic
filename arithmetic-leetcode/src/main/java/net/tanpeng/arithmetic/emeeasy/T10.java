@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.eleme;
+package net.tanpeng.arithmetic.emeeasy;
 
 /**
  * 10. 一个排好序的数组(升序)，给一个数字，判断数组中是否有两个数加起来=给定的数字

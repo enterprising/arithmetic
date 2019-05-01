@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.eleme;
+package net.tanpeng.arithmetic.emeeasy;
 
 /**
  * 5. 输入两个字符串表示version，"1.1.2", "1.1.1", 判断两个version那个是最新的。(简化一下，假定输入都是合法的)

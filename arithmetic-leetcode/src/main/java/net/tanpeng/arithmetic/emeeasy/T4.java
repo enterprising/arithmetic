@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.eleme;
+package net.tanpeng.arithmetic.emeeasy;
 
 /**
  * 判断一个字符串是不是回文, given "abcba" return true， given "abcab" return false;

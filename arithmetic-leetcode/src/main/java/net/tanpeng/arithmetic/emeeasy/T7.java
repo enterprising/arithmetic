@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.eleme;
+package net.tanpeng.arithmetic.emeeasy;
 
 import java.util.HashMap;
 import java.util.Map;

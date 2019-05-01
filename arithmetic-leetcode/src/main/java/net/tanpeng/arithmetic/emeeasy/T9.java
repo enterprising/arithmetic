@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.eleme;
+package net.tanpeng.arithmetic.emeeasy;
 
 /**
  * 这道题是朱老师必考的，朱老师说可以pass 70%的人
