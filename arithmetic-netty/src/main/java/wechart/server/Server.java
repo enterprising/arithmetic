@@ -6,12 +6,10 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import wechart.server.handler.inbound.InBoundHandlerA;
-import wechart.server.handler.inbound.InBoundHandlerB;
-import wechart.server.handler.inbound.InBoundHandlerC;
-import wechart.server.handler.outbound.OutBoundHandlerA;
-import wechart.server.handler.outbound.OutBoundHandlerB;
-import wechart.server.handler.outbound.OutBoundHandlerC;
+import wechart.codec.PacketDecoder;
+import wechart.codec.PacketEncoder;
+import wechart.server.handler.LoginRequestHandler;
+import wechart.server.handler.MessageRequestHandler;
 
 import java.util.Date;
 
@@ -37,17 +35,20 @@ public class Server {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
-//                        ch.pipeline().addLast(new ServerHandler());
+                        ch.pipeline().addLast(new PacketDecoder());
+                        ch.pipeline().addLast(new LoginRequestHandler());
+                        ch.pipeline().addLast(new MessageRequestHandler());
+                        ch.pipeline().addLast(new PacketEncoder());
 
-                        // inBound，处理读数据的逻辑
-                        ch.pipeline().addLast(new InBoundHandlerA());
-                        ch.pipeline().addLast(new InBoundHandlerB());
-                        ch.pipeline().addLast(new InBoundHandlerC());
-
-                        // outBound，处理写数据的逻辑链
-                        ch.pipeline().addLast(new OutBoundHandlerA());
-                        ch.pipeline().addLast(new OutBoundHandlerB());
-                        ch.pipeline().addLast(new OutBoundHandlerC());
+//                        // inBound，处理读数据的逻辑 顺序是abc
+//                        ch.pipeline().addLast(new InBoundHandlerA());
+//                        ch.pipeline().addLast(new InBoundHandlerB());
+//                        ch.pipeline().addLast(new InBoundHandlerC());
+//
+//                        // outBound，处理写数据的逻辑链  顺序是bca
+//                        ch.pipeline().addLast(new OutBoundHandlerA());
+//                        ch.pipeline().addLast(new OutBoundHandlerB());
+//                        ch.pipeline().addLast(new OutBoundHandlerC());
                     }
                 });
 

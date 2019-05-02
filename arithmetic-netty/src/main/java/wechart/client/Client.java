@@ -1,7 +1,6 @@
 package wechart.client;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -9,8 +8,10 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import wechart.protocol.Packet;
-import wechart.protocol.PacketCodeC;
+import wechart.client.handler.LoginResponseHandler;
+import wechart.client.handler.MessageResponseHandler;
+import wechart.codec.PacketDecoder;
+import wechart.codec.PacketEncoder;
 import wechart.protocol.request.MessageRequestPacket;
 import wechart.util.LoginUtil;
 
@@ -39,7 +40,10 @@ public class Client {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ClientHandler());
+                        ch.pipeline().addLast(new PacketDecoder());
+                        ch.pipeline().addLast(new LoginResponseHandler());
+                        ch.pipeline().addLast(new MessageResponseHandler());
+                        ch.pipeline().addLast(new PacketEncoder());
                     }
                 });
 
@@ -73,12 +77,7 @@ public class Client {
                     System.out.println("输入消息发送到服务端：");
                     Scanner sc = new Scanner(System.in);
                     String line = sc.nextLine();
-
-                    // 发送数据包
-                    MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                    messageRequestPacket.setMessage(line);
-                    ByteBuf byteBuf = PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket);
-                    channel.writeAndFlush(byteBuf);
+                    channel.writeAndFlush(new MessageRequestPacket(line));
                 }
             }
         }).start();
