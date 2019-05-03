@@ -8,6 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
+import wechart.codec.Spliter;
 import wechart.server.handler.LoginRequestHandler;
 import wechart.server.handler.MessageRequestHandler;
 
@@ -35,6 +36,7 @@ public class Server {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
+                        ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginRequestHandler());
                         ch.pipeline().addLast(new MessageRequestHandler());

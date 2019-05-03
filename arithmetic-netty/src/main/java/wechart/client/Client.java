@@ -12,6 +12,7 @@ import wechart.client.handler.LoginResponseHandler;
 import wechart.client.handler.MessageResponseHandler;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
+import wechart.codec.Spliter;
 import wechart.protocol.request.MessageRequestPacket;
 import wechart.util.LoginUtil;
 
@@ -40,6 +41,7 @@ public class Client {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginResponseHandler());
                         ch.pipeline().addLast(new MessageResponseHandler());
