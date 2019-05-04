@@ -75,12 +75,13 @@ public class Client {
     private static void startConsoleThread(Channel channel) {
         new Thread(() -> {
             while (!Thread.interrupted()) {
-                if (LoginUtil.hasLogin(channel)) {
-                    System.out.println("输入消息发送到服务端：");
-                    Scanner sc = new Scanner(System.in);
-                    String line = sc.nextLine();
-                    channel.writeAndFlush(new MessageRequestPacket(line));
-                }
+                // 登录验证换种方式实现
+//                if (LoginUtil.hasLogin(channel)) {
+                System.out.println("输入消息发送到服务端：");
+                Scanner sc = new Scanner(System.in);
+                String line = sc.nextLine();
+                channel.writeAndFlush(new MessageRequestPacket(line));
+//                }
             }
         }).start();
     }
