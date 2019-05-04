@@ -13,8 +13,9 @@ import wechart.client.handler.MessageResponseHandler;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
 import wechart.codec.Spliter;
+import wechart.protocol.request.LoginRequestPacket;
 import wechart.protocol.request.MessageRequestPacket;
-import wechart.util.LoginUtil;
+import wechart.util.SessionUtil;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -73,16 +74,46 @@ public class Client {
     }
 
     private static void startConsoleThread(Channel channel) {
+        Scanner sc = new Scanner(System.in);
+        LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
+
         new Thread(() -> {
             while (!Thread.interrupted()) {
-                // 登录验证换种方式实现
-//                if (LoginUtil.hasLogin(channel)) {
-                System.out.println("输入消息发送到服务端：");
-                Scanner sc = new Scanner(System.in);
-                String line = sc.nextLine();
-                channel.writeAndFlush(new MessageRequestPacket(line));
-//                }
+                if (!SessionUtil.hasLogin(channel)) {
+                    System.out.print("输入用户名登录: ");
+                    String username = sc.nextLine();
+                    loginRequestPacket.setUsername(username);
+
+                    // 密码使用默认的
+                    loginRequestPacket.setPassword("pwd");
+
+                    // 发送登录数据包
+                    channel.writeAndFlush(loginRequestPacket);
+                    waitForLoginResponse();
+                } else {
+                    String toUserId = sc.next();
+                    String message = sc.next();
+                    channel.writeAndFlush(new MessageRequestPacket(toUserId, message));
+                }
             }
         }).start();
+//        new Thread(() -> {
+//            while (!Thread.interrupted()) {
+//                // 登录验证换种方式实现
+////                if (LoginUtil.hasLogin(channel)) {
+//                System.out.println("输入消息发送到服务端：");
+//                Scanner sc = new Scanner(System.in);
+//                String line = sc.nextLine();
+//                channel.writeAndFlush(new MessageRequestPacket(line));
+////                }
+//            }
+//        }).start();
+    }
+
+    private static void waitForLoginResponse() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ignored) {
+        }
     }
 }

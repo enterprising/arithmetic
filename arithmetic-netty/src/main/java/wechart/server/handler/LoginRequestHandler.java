@@ -4,9 +4,12 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import wechart.protocol.request.LoginRequestPacket;
 import wechart.protocol.response.LoginResponsePacket;
+import wechart.session.Session;
 import wechart.util.LoginUtil;
+import wechart.util.SessionUtil;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by peng.tan on 2019/5/2.
@@ -18,10 +21,13 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         loginResponsePacket.setVersion(loginRequestPacket.getVersion());
+        loginResponsePacket.setUserName(loginRequestPacket.getUsername());
         if (valid(loginRequestPacket)) {
             loginResponsePacket.setSuccess(true);
-            System.out.println(new Date() + ": 登陆成功！");
-            LoginUtil.markAsLogin(ctx.channel());
+            String userid = randomUserId();
+            loginResponsePacket.setUserId(userid);
+            System.out.println("[" + loginRequestPacket.getUsername() + "]登录成功");
+            SessionUtil.bindSession(new Session(userid, loginRequestPacket.getUsername()), ctx.channel());
         } else {
             loginResponsePacket.setReason("账号密码校验失败！");
             loginResponsePacket.setSuccess(false);
@@ -33,5 +39,14 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
     private boolean valid(LoginRequestPacket loginRequestPacket) {
         return true;
+    }
+
+    private static String randomUserId() {
+        return UUID.randomUUID().toString().split("-")[0];
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) {
+        SessionUtil.unBindSession(ctx.channel());
     }
 }
