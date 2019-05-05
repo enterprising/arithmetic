@@ -1,4 +1,4 @@
-package wechart.server;
+package wechart.server.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

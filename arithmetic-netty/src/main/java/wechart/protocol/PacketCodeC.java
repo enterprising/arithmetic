@@ -2,14 +2,8 @@ package wechart.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import wechart.protocol.request.CreateGroupRequestPacket;
-import wechart.protocol.request.LoginRequestPacket;
-import wechart.protocol.request.LogoutRequestPacket;
-import wechart.protocol.request.MessageRequestPacket;
-import wechart.protocol.response.CreateGroupResponsePacket;
-import wechart.protocol.response.LoginResponsePacket;
-import wechart.protocol.response.LogoutResponsePacket;
-import wechart.protocol.response.MessageResponsePacket;
+import wechart.protocol.request.*;
+import wechart.protocol.response.*;
 import wechart.serialize.JSONSerializer;
 import wechart.serialize.Serializer;
 
@@ -38,6 +32,12 @@ public class PacketCodeC {
         packetTypeMap.put(LOGOUT_RESPONSE, LogoutResponsePacket.class);
         packetTypeMap.put(CREATE_GROUP_REQUEST, CreateGroupRequestPacket.class);
         packetTypeMap.put(CREATE_GROUP_RESPONSE, CreateGroupResponsePacket.class);
+        packetTypeMap.put(JOIN_GROUP_REQUEST, JoinGroupRequestPacket.class);
+        packetTypeMap.put(JOIN_GROUP_RESPONSE, JoinGroupResponsePacket.class);
+        packetTypeMap.put(QUIT_GROUP_REQUEST, QuitGroupRequestPacket.class);
+        packetTypeMap.put(QUIT_GROUP_RESPONSE, QuitGroupResponsePacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBERS_REQUEST, ListGroupMembersRequestPacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBERS_RESPONSE, ListGroupMembersResponsePacket.class);
 
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();

@@ -10,10 +10,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import wechart.client.console.ConsoleCommandManager;
 import wechart.client.console.LoginConsoleCommand;
-import wechart.client.handler.CreateGroupResponseHandler;
-import wechart.client.handler.LoginResponseHandler;
-import wechart.client.handler.LogoutResponseHandler;
-import wechart.client.handler.MessageResponseHandler;
+import wechart.client.handler.*;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
 import wechart.codec.Spliter;
@@ -48,10 +45,20 @@ public class Client {
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
+                        // 登录响应处理器
                         ch.pipeline().addLast(new LoginResponseHandler());
+                        // 收消息处理器
                         ch.pipeline().addLast(new MessageResponseHandler());
-                        ch.pipeline().addLast(new LogoutResponseHandler());
+                        // 创建群响应处理器
                         ch.pipeline().addLast(new CreateGroupResponseHandler());
+                        // 加群响应处理器
+                        ch.pipeline().addLast(new JoinGroupResponseHandler());
+                        // 退群响应处理器
+                        ch.pipeline().addLast(new QuitGroupResponseHandler());
+                        // 获取群成员响应处理器
+                        ch.pipeline().addLast(new ListGroupMembersResponseHandler());
+                        // 登出响应处理器
+                        ch.pipeline().addLast(new LogoutResponseHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
                 });
