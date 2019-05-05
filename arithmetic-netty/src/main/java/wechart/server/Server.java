@@ -9,9 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
 import wechart.codec.Spliter;
-import wechart.server.handler.LifeCyCleTestHandler;
-import wechart.server.handler.LoginRequestHandler;
-import wechart.server.handler.MessageRequestHandler;
+import wechart.server.handler.*;
 
 import java.util.Date;
 
@@ -43,6 +41,8 @@ public class Server {
                         ch.pipeline().addLast(new LoginRequestHandler());
                         ch.pipeline().addLast(new AuthHandler());
                         ch.pipeline().addLast(new MessageRequestHandler());
+                        ch.pipeline().addLast(new CreateGroupRequestHandler());
+                        ch.pipeline().addLast(new LogoutRequestHandler());
                         ch.pipeline().addLast(new PacketEncoder());
 
 //                        // inBound，处理读数据的逻辑 顺序是abc

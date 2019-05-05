@@ -5,11 +5,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import wechart.protocol.request.LoginRequestPacket;
 import wechart.protocol.response.LoginResponsePacket;
 import wechart.session.Session;
-import wechart.util.LoginUtil;
+import wechart.util.IDUtil;
 import wechart.util.SessionUtil;
 
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Created by peng.tan on 2019/5/2.
@@ -24,7 +23,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         loginResponsePacket.setUserName(loginRequestPacket.getUsername());
         if (valid(loginRequestPacket)) {
             loginResponsePacket.setSuccess(true);
-            String userid = randomUserId();
+            String userid = IDUtil.randomId();
             loginResponsePacket.setUserId(userid);
             System.out.println("[" + loginRequestPacket.getUsername() + "]登录成功");
             SessionUtil.bindSession(new Session(userid, loginRequestPacket.getUsername()), ctx.channel());
@@ -39,10 +38,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
     private boolean valid(LoginRequestPacket loginRequestPacket) {
         return true;
-    }
-
-    private static String randomUserId() {
-        return UUID.randomUUID().toString().split("-")[0];
     }
 
     @Override

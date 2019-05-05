@@ -2,9 +2,13 @@ package wechart.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import wechart.protocol.request.CreateGroupRequestPacket;
 import wechart.protocol.request.LoginRequestPacket;
+import wechart.protocol.request.LogoutRequestPacket;
 import wechart.protocol.request.MessageRequestPacket;
+import wechart.protocol.response.CreateGroupResponsePacket;
 import wechart.protocol.response.LoginResponsePacket;
+import wechart.protocol.response.LogoutResponsePacket;
 import wechart.protocol.response.MessageResponsePacket;
 import wechart.serialize.JSONSerializer;
 import wechart.serialize.Serializer;
@@ -30,6 +34,10 @@ public class PacketCodeC {
         packetTypeMap.put(LOGIN_RESPONSE, LoginResponsePacket.class);
         packetTypeMap.put(MESSAGE_REQUEST, MessageRequestPacket.class);
         packetTypeMap.put(MESSAGE_RESPONSE, MessageResponsePacket.class);
+        packetTypeMap.put(LOGOUT_REQUEST, LogoutRequestPacket.class);
+        packetTypeMap.put(LOGOUT_RESPONSE, LogoutResponsePacket.class);
+        packetTypeMap.put(CREATE_GROUP_REQUEST, CreateGroupRequestPacket.class);
+        packetTypeMap.put(CREATE_GROUP_RESPONSE, CreateGroupResponsePacket.class);
 
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();
