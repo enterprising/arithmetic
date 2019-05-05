@@ -7,7 +7,6 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import wechart.protocol.request.CreateGroupRequestPacket;
 import wechart.protocol.response.CreateGroupResponsePacket;
-import wechart.session.Session;
 import wechart.util.IDUtil;
 import wechart.util.SessionUtil;
 
