@@ -6,10 +6,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import wechart.codec.PacketDecoder;
-import wechart.codec.PacketEncoder;
+import wechart.codec.PacketCodecHandler;
 import wechart.codec.Spliter;
-import wechart.server.handler.*;
+import wechart.server.handler.AuthHandler;
+import wechart.server.handler.IMHandler;
+import wechart.server.handler.LoginRequestHandler;
 
 import java.util.Date;
 
@@ -35,37 +36,11 @@ public class Server {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
-//                        ch.pipeline().addLast(new LifeCyCleTestHandler());
                         ch.pipeline().addLast(new Spliter());
-                        ch.pipeline().addLast(new PacketDecoder());
-                        // 登录请求处理器
-                        ch.pipeline().addLast(new LoginRequestHandler());
-                        ch.pipeline().addLast(new AuthHandler());
-                        // 单聊消息请求处理器
-                        ch.pipeline().addLast(new MessageRequestHandler());
-                        // 创建群请求处理器
-                        ch.pipeline().addLast(new CreateGroupRequestHandler());
-                        // 加群请求处理器
-                        ch.pipeline().addLast(new JoinGroupRequestHandler());
-                        // 退群请求处理器
-                        ch.pipeline().addLast(new QuitGroupRequestHandler());
-                        // 获取群成员请求处理器
-                        ch.pipeline().addLast(new ListGroupMembersRequestHandler());
-                        // 群聊消息处理器
-                        ch.pipeline().addLast(new GroupMessageRequestHandler());
-                        // 登出请求处理器
-                        ch.pipeline().addLast(new LogoutRequestHandler());
-                        ch.pipeline().addLast(new PacketEncoder());
-
-//                        // inBound，处理读数据的逻辑 顺序是abc
-//                        ch.pipeline().addLast(new InBoundHandlerA());
-//                        ch.pipeline().addLast(new InBoundHandlerB());
-//                        ch.pipeline().addLast(new InBoundHandlerC());
-//
-//                        // outBound，处理写数据的逻辑链  顺序是bca
-//                        ch.pipeline().addLast(new OutBoundHandlerA());
-//                        ch.pipeline().addLast(new OutBoundHandlerB());
-//                        ch.pipeline().addLast(new OutBoundHandlerC());
+                        ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
+                        ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
+                        ch.pipeline().addLast(AuthHandler.INSTANCE);
+                        ch.pipeline().addLast(IMHandler.INSTANCE);
                     }
                 });
 

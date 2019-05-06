@@ -1,5 +1,6 @@
 package wechart.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -10,7 +11,10 @@ import wechart.util.SessionUtil;
 /**
  * Created by peng.tan on 2019/5/5.
  */
+@ChannelHandler.Sharable
 public class JoinGroupRequestHandler extends SimpleChannelInboundHandler<JoinGroupRequestPacket> {
+    public static final JoinGroupRequestHandler INSTANCE = new JoinGroupRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, JoinGroupRequestPacket requestPacket) throws Exception {
         // 1.获取群对应的 channelGroup，然后将当前用户的 channel 添加进去

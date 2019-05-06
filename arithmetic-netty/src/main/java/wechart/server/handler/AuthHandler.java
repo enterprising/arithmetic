@@ -1,5 +1,6 @@
 package wechart.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import wechart.util.SessionUtil;
@@ -7,7 +8,10 @@ import wechart.util.SessionUtil;
 /**
  * Created by peng.tan on 2019/5/4.
  */
+@ChannelHandler.Sharable
 public class AuthHandler extends ChannelInboundHandlerAdapter {
+    public static final AuthHandler INSTANCE = new AuthHandler();
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (!SessionUtil.hasLogin(ctx.channel())) {

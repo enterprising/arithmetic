@@ -1,6 +1,7 @@
 package wechart.server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -16,7 +17,10 @@ import java.util.List;
 /**
  * Created by peng.tan on 2019/5/5.
  */
+@ChannelHandler.Sharable
 public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<CreateGroupRequestPacket> {
+    public static final CreateGroupRequestHandler INSTANCE = new CreateGroupRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, CreateGroupRequestPacket createGroupRequestPacket) throws Exception {
         List<String> userIdList = createGroupRequestPacket.getUserIdList();
@@ -26,9 +30,9 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
         ChannelGroup channelGroup = new DefaultChannelGroup(ctx.executor());
 
         // 2、筛选出待加入群聊的用户的 channel和username
-        for (String userId :userIdList){
+        for (String userId : userIdList) {
             Channel channel = SessionUtil.getChannel(userId);
-            if (channel!=null){
+            if (channel != null) {
                 channelGroup.add(channel);
                 userNameList.add(SessionUtil.getSession(channel).getUserName());
             }

@@ -1,6 +1,7 @@
 package wechart.server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import wechart.protocol.request.MessageRequestPacket;
@@ -11,7 +12,10 @@ import wechart.util.SessionUtil;
 /**
  * Created by peng.tan on 2019/5/2.
  */
+@ChannelHandler.Sharable
 public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRequestPacket> {
+    public static final MessageRequestHandler INSTANCE = new MessageRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket messageRequestPacket) throws Exception {
 //        // 处理客户端发过来的消息

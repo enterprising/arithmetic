@@ -1,6 +1,7 @@
 package wechart.server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -15,7 +16,10 @@ import java.util.List;
 /**
  * Created by peng.tan on 2019/5/5.
  */
+@ChannelHandler.Sharable
 public class ListGroupMembersRequestHandler extends SimpleChannelInboundHandler<ListGroupMembersRequestPacket> {
+    public static final ListGroupMembersRequestHandler INSTANCE = new ListGroupMembersRequestHandler();
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ListGroupMembersRequestPacket requestPacket) throws Exception {
 
@@ -34,6 +38,6 @@ public class ListGroupMembersRequestHandler extends SimpleChannelInboundHandler<
         ListGroupMembersResponsePacket responsePacket = new ListGroupMembersResponsePacket();
         responsePacket.setGroupId(groupId);
         responsePacket.setSessionList(sessionList);
-        ctx.channel().writeAndFlush(responsePacket);
+        ctx.writeAndFlush(responsePacket);
     }
 }
