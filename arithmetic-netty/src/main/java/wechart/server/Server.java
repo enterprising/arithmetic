@@ -51,6 +51,8 @@ public class Server {
                         ch.pipeline().addLast(new QuitGroupRequestHandler());
                         // 获取群成员请求处理器
                         ch.pipeline().addLast(new ListGroupMembersRequestHandler());
+                        // 群聊消息处理器
+                        ch.pipeline().addLast(new GroupMessageRequestHandler());
                         // 登出请求处理器
                         ch.pipeline().addLast(new LogoutRequestHandler());
                         ch.pipeline().addLast(new PacketEncoder());
