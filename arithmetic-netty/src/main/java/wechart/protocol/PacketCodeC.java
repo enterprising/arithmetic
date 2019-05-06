@@ -1,7 +1,6 @@
 package wechart.protocol;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
 import wechart.protocol.request.*;
 import wechart.protocol.response.*;
 import wechart.serialize.JSONSerializer;
