@@ -3,7 +3,7 @@ package wechart.protocol.response;
 import lombok.Data;
 import wechart.protocol.Packet;
 
-import static wechart.protocol.command.Command.JOIN_GROUP_RESPONSE;
+import static wechart.protocol.Command.JOIN_GROUP_RESPONSE;
 
 /**
  * Created by peng.tan on 2019/5/5.

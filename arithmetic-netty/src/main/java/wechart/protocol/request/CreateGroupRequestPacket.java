@@ -5,7 +5,7 @@ import wechart.protocol.Packet;
 
 import java.util.List;
 
-import static wechart.protocol.command.Command.CREATE_GROUP_REQUEST;
+import static wechart.protocol.Command.CREATE_GROUP_REQUEST;
 
 /**
  * Created by peng.tan on 2019/5/5.

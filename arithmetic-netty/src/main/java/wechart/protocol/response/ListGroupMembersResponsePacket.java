@@ -6,7 +6,7 @@ import wechart.session.Session;
 
 import java.util.List;
 
-import static wechart.protocol.command.Command.LIST_GROUP_MEMBERS_RESPONSE;
+import static wechart.protocol.Command.LIST_GROUP_MEMBERS_RESPONSE;
 
 /**
  * Created by peng.tan on 2019/5/5.

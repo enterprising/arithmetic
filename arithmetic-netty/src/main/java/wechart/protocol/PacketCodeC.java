@@ -9,7 +9,7 @@ import wechart.serialize.Serializer;
 import java.util.HashMap;
 import java.util.Map;
 
-import static wechart.protocol.command.Command.*;
+import static wechart.protocol.Command.*;
 
 
 public class PacketCodeC {
@@ -39,7 +39,8 @@ public class PacketCodeC {
         packetTypeMap.put(LIST_GROUP_MEMBERS_RESPONSE, ListGroupMembersResponsePacket.class);
         packetTypeMap.put(GROUP_MESSAGE_REQUEST, GroupMessageRequestPacket.class);
         packetTypeMap.put(GROUP_MESSAGE_RESPONSE, GroupMessageResponsePacket.class);
-
+        packetTypeMap.put(HEARTBEAT_REQUEST, HeartBeatRequestPacket.class);
+        packetTypeMap.put(HEARTBEAT_RESPONSE, HeartBeatResponsePacket.class);
 
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();

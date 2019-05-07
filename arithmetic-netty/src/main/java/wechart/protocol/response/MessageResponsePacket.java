@@ -3,7 +3,7 @@ package wechart.protocol.response;
 import lombok.Data;
 import wechart.protocol.Packet;
 
-import static wechart.protocol.command.Command.MESSAGE_RESPONSE;
+import static wechart.protocol.Command.MESSAGE_RESPONSE;
 
 /**
  * Created by peng.tan on 2019/5/1.

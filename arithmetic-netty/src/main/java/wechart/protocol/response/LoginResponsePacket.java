@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import wechart.protocol.Packet;
 
-import static wechart.protocol.command.Command.LOGIN_RESPONSE;
+import static wechart.protocol.Command.LOGIN_RESPONSE;
 
 /**
  * Created by peng.tan on 2019/4/22.

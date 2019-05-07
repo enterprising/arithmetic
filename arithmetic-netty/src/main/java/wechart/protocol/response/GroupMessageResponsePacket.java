@@ -4,7 +4,7 @@ import lombok.Data;
 import wechart.protocol.Packet;
 import wechart.session.Session;
 
-import static wechart.protocol.command.Command.GROUP_MESSAGE_RESPONSE;
+import static wechart.protocol.Command.GROUP_MESSAGE_RESPONSE;
 
 /**
  * Created by peng.tan on 2019/5/6.

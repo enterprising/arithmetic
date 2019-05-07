@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import wechart.protocol.Packet;
 
-import static wechart.protocol.command.Command.MESSAGE_REQUEST;
+import static wechart.protocol.Command.MESSAGE_REQUEST;
 
 /**
  * Created by peng.tan on 2019/5/1.

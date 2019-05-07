@@ -6,9 +6,11 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import wechart.checkalive.IMIdleStateHandler;
 import wechart.codec.PacketCodecHandler;
 import wechart.codec.Spliter;
 import wechart.server.handler.AuthHandler;
+import wechart.server.handler.HeartBeatRequestHandler;
 import wechart.server.handler.IMHandler;
 import wechart.server.handler.LoginRequestHandler;
 
@@ -36,14 +38,16 @@ public class Server {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
+                        // 空闲检测
+                        ch.pipeline().addLast(new IMIdleStateHandler());
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
                         ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
+                        ch.pipeline().addLast(HeartBeatRequestHandler.INSTANCE);
                         ch.pipeline().addLast(AuthHandler.INSTANCE);
                         ch.pipeline().addLast(IMHandler.INSTANCE);
                     }
                 });
-
 
         bind(serverBootstrap, PORT);
     }

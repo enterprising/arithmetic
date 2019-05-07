@@ -1,4 +1,4 @@
-package wechart.protocol.command;
+package wechart.protocol;
 
 /**
  * Created by peng.tan on 2019/4/6.
@@ -36,4 +36,8 @@ public interface Command {
     Byte GROUP_MESSAGE_REQUEST = 15;
 
     Byte GROUP_MESSAGE_RESPONSE = 16;
+
+    Byte HEARTBEAT_REQUEST = 17;
+
+    Byte HEARTBEAT_RESPONSE = 18;
 }

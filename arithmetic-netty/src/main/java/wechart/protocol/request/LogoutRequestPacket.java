@@ -3,7 +3,7 @@ package wechart.protocol.request;
 import lombok.Data;
 import wechart.protocol.Packet;
 
-import static wechart.protocol.command.Command.LOGOUT_REQUEST;
+import static wechart.protocol.Command.LOGOUT_REQUEST;
 
 /**
  * Created by peng.tan on 2019/5/5.

@@ -8,7 +8,7 @@ import wechart.protocol.Packet;
 import java.util.HashMap;
 import java.util.Map;
 
-import static wechart.protocol.command.Command.*;
+import static wechart.protocol.Command.*;
 
 /**
  * Created by peng.tan on 2019/5/6.
