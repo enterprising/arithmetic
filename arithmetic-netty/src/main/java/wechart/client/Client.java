@@ -15,8 +15,6 @@ import wechart.client.handler.*;
 import wechart.codec.PacketDecoder;
 import wechart.codec.PacketEncoder;
 import wechart.codec.Spliter;
-import wechart.protocol.request.LoginRequestPacket;
-import wechart.protocol.request.MessageRequestPacket;
 import wechart.util.SessionUtil;
 
 import java.util.Date;
