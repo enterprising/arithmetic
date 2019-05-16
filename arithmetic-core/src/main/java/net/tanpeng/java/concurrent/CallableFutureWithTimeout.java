@@ -10,15 +10,10 @@ public class CallableFutureWithTimeout {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         CompletionService completionService = new ExecutorCompletionService(executor);
 
-        Future future = completionService.submit(new Callable() {
-            @Override
-            public Object call() throws Exception {
-                return 1;
-            }
-        });
+        Future future = completionService.submit(() -> 1);
 
         // 第一个参数是 timeout的时间，第二个是单位
         Object result = future.get(10000, TimeUnit.SECONDS);
-
+        System.out.println(result);
     }
 }
