@@ -13,3 +13,5 @@ gradle/
 *.class
 
 .gradle
+gradlew
+gradlew.bat
