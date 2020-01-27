@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 设置日志输出为LOG4J -->
+        <setting name="logImpl" value="LOG4J" />
+        <!--将以下画线方式命名的数据库列映射到 Java 对象的驼峰式命名属性中-->
+        <setting name= "mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <!--简化类命名空间 -->
+    <typeAliases>
+        <package name="net.tanpeng.mybatis.model" />
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url"
+                          value="jdbc:mysql://localhost:2311/daltestdb?useSSL=false" />
+                <property name="username" value="root" />
+                <property name="password" value="root" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--常规做法-->
+        <mapper resource="mapper/ShopMapper.xml" />
+        <!--<mapper resource="net/tanpeng/mybatis/mapper/PrivilegeMapper.xml" />-->
+        <!--<mapper resource="net/tanpeng/mybatis/mapper/RoleMapper.xml" />-->
+        <!--<mapper resource="net/tanpeng/mybatis/mapper/RolePrivilegeMapper.xml" />-->
+        <!--<mapper resource="net/tanpeng/mybatis/mapper/UserMapper.xml" />-->
+        <!--<mapper resource="net/tanpeng/mybatis/mapper/UserRoleMapper.xml" />-->
+
+        <!--第二种做法-->
+        <!--<package name="net.tanpeng.mybatis.mapper"/>-->
+    </mappers>
+</configuration>

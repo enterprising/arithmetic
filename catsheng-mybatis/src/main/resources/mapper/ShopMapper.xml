@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.tanpeng.mybatis.mapper.ShopMapper">
+    <resultMap id="shop" type="net.tanpeng.mybatis.model.Shop">
+        <id property="id" column="id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shopOid" column="shop_oid"/>
+        <result property="shardid" column="shard_id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createdTime" column="created_at" jdbcType="TIMESTAMP"/>
+        <result property="updatedTime" column="updated_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectByid" resultMap="shop">
+        select * from gzs_shop_a where id =#{id}
+    </select>
+
+</mapper>
