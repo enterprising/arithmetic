@@ -1,7 +1,7 @@
 package net.tanpeng.arithmetic.leetcode;
 
 /**
- * 两个链表逆序，想加。主要考虑进位，考虑链表的操作
+ * 两个链表逆序，相加。主要考虑进位，考虑链表的操作
  * Created by peng.tan on 2020/1/27.
  */
 public class AddTwoNumbers {

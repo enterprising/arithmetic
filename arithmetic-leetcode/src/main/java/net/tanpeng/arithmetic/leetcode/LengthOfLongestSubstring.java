@@ -1,6 +1,8 @@
 package net.tanpeng.arithmetic.leetcode;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -15,22 +17,23 @@ public class LengthOfLongestSubstring {
         char[] str = s.toCharArray();
         int max = 1;
         for (int i = 0; i < str.length; i++) {
-            Set<Character> set = new HashSet<>();
-            set.add(str[i]);
+            Map<Character, Integer> map = new HashMap<>();
+            map.put(str[i], i);
             int tempMax = 1;
             for (int j = i + 1; j < str.length; j++) {
-                if (set.contains(str[j])) {
+                if (map.containsKey(str[j])) {
+                    i = map.get(str[j]);
                     break;
                 }
-                set.add(str[j]);
+                map.put(str[j], j);
                 tempMax++;
             }
-            max = tempMax > max ? tempMax : max;
+            max = Math.max(tempMax, max);
         }
         return max;
     }
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcbb"));
+        System.out.println(lengthOfLongestSubstring("aab"));
     }
 }
