@@ -9,7 +9,7 @@ public class ReverseList {
         // 4->3->2->1
         ListNode prev = null;
         ListNode curr = head;
-        while (curr!=null){
+        while (curr != null) {
             // 先记录下一个节点，因为当前节点会变化
             ListNode nextNode = curr.next;
             // 将当前的下一个节点指向此前记录的prev节点，第一次prev为NULL
@@ -27,14 +27,14 @@ public class ReverseList {
      */
     public static ListNode reverseList2(ListNode head) {
         ListNode result = new ListNode(0);
-        ListNode headResult =result;
+        ListNode headResult = result;
         Stack<Integer> stack = new Stack<>();
         while (head != null) {
             stack.push(head.val);
             head = head.next;
         }
 
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             result.next = new ListNode(stack.pop());
             result = result.next;
         }
