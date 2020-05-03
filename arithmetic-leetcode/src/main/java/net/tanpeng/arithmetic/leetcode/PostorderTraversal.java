@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 前序遍历，前左右
- *
  * @author: peng.tan
- * @create: 2020/04/28 23:15
+ * @create: 2020/05/02 16:18
  */
-public class PreorderTraversal {
+public class PostorderTraversal {
     List<Integer> result = new ArrayList<>();
 
-    public List<Integer> preorderTraversal(TreeNode root) {
-        rf(root);
+    public List<Integer> postorderTraversal(TreeNode root) {
+        if (root == null) {
+            return result;
+        }
+        dg(root);
         return result;
     }
 
-    public void rf(TreeNode root) {
+    private void dg(TreeNode root) {
         if (root == null) {
             return;
         }
+        dg(root.left);
+        dg(root.right);
         result.add(root.val);
-        preorderTraversal(root.left);
-        preorderTraversal(root.right);
     }
-
 }

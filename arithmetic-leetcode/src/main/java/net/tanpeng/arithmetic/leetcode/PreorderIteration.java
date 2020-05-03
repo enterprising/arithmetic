@@ -13,7 +13,7 @@ import java.util.Stack;
  * @author: peng.tan
  * @create: 2020/04/28 23:48
  */
-public class PreorderTraversalDieDai {
+public class PreorderIteration {
     public List<Integer> preorderTraversal(TreeNode root) {
         if (root == null) {
             return Collections.emptyList();
