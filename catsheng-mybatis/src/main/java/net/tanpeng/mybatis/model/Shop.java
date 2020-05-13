@@ -1,9 +1,6 @@
 package net.tanpeng.mybatis.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -14,6 +11,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Shop {
     private int id;
     private long shopId;
@@ -22,4 +21,8 @@ public class Shop {
     private boolean isDelete;
     private Date createdTime;
     private Date updatedTime;
+
+    public int getShardid() {
+        return shardid;
+    }
 }
