@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * 参考https://www.jianshu.com/p/79ca08116d57
+ * 关于rabbitmq集群以及基本说明：https://cloud.tencent.com/developer/article/1391426
  */
 public class Producer {
 
