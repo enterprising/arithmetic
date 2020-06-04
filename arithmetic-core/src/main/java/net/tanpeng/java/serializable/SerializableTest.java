@@ -8,8 +8,8 @@ import java.io.*;
 public class SerializableTest {
 
     public static void main(String[] args) {
-        File file = new File("./arithmetic-core/src/main/java/net/tanpeng/java/serializable" + File.separator + "out.txt");
-
+        System.out.println("开始序列化");
+        File file = new File("./arithmetic-core/src/main/java/net/tanpeng/java/serializable" + File.separator + "out.txt.2");
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
@@ -39,6 +39,7 @@ public class SerializableTest {
             }
         }
 
+        System.out.println("开始反序列化");
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(file);
