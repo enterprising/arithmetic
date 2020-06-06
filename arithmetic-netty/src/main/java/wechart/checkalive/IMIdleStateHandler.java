@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
  * 何为空闲检测？空闲检测指的是每隔一段时间，检测这段时间内是否有数据读写，
  * 简化一下，我们的服务端只需要检测一段时间内，是否收到过客户端发来的数据即可，Netty 自带的 IdleStateHandler 就可以实现这个功能。
  * <p>
+ * 在 Netty 中, 实现心跳机制的关键是 IdleStateHandler, 它可以对一个 Channel 的 读/写设置定时器,
+ * 当 Channel 在一定事件间隔内没有数据交互时(即处于 idle 状态), 就会触发指定的事件.
  * Created by peng.tan on 2019/5/7.
  */
 public class IMIdleStateHandler extends IdleStateHandler {
