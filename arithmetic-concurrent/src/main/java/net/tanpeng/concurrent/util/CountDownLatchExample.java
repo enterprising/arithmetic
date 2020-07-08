@@ -1,9 +1,5 @@
 package net.tanpeng.concurrent.util;
 
-import javafx.concurrent.Task;
-
-import javax.xml.transform.Source;
-import java.sql.SQLOutput;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
