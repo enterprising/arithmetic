@@ -6,6 +6,10 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import wechart.protocol.PacketCodeC;
 
 /**
+ * 主要解决拆包粘包问题
+ * LengthFieldBasedFrameDecoder 表示读取特定位数 表示length，然后读取后面的length位
+ * 这个是最常用的方案
+ *
  * Created by peng.tan on 2019/5/3.
  */
 public class Spliter extends LengthFieldBasedFrameDecoder {

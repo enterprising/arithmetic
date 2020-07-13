@@ -12,6 +12,9 @@ import wechart.util.SessionUtil;
 import java.util.Date;
 
 /**
+ * SimpleChannelInboundHandler 接受泛型参数，使得我们可以不用再判断 package 该被哪个handler处理的，写一大堆 if-else
+ * 判断的逻辑交到 SimpleChannelInboundHandler 去做了，当类型符合泛型里面内的时候，就会被目标 handler 处理。
+ *
  * Created by peng.tan on 2019/5/2.
  */
 @ChannelHandler.Sharable
