@@ -60,9 +60,25 @@ public class Fibonacci {
         return (int) Math.pow(2, target - 1);
     }
 
+
+    public static int fibonacciFinal(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int result = 0;
+        int prePre = 0;
+        int pre = 1;
+        System.out.println(pre);
+        for (int i = 2; i <= n; i++) {
+            result = pre + prePre;
+            prePre = pre;
+            pre = result;
+            System.out.println(result);
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println(Fibonacci(5));
-        System.out.println(Fibonacci2(5));
-        System.out.println(Fibonacci3(2));
+        System.out.println(fibonacciFinal(5));
     }
 }
