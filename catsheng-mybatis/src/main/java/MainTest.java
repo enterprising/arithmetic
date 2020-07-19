@@ -26,6 +26,7 @@ public class MainTest {
             Shop user = mapper.selectByid(1L);
             System.out.println(user.getShardid());
 
+            // update 的时候，如果没设置autocommit=true，一定要手动commit
             session.commit();
         } catch (IOException e) {
             e.printStackTrace();
