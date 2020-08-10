@@ -15,9 +15,9 @@ public class T1 {
 
         int low = 0;
         int high = a.length - 1;
-        int mid = low / 2 + high / 2;
         int result = 0;
         while (low < high) {
+            int mid = low + (high - low) / 2;
             if (a[mid] > target) {
                 high = mid - 1;
             } else if (a[mid] < target) {
@@ -26,7 +26,6 @@ public class T1 {
                 result = mid;
                 high--;
             }
-            mid = low / 2 + high / 2;
         }
         System.out.println(result);
     }
