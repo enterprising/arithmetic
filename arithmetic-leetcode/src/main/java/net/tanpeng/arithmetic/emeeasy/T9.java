@@ -8,14 +8,12 @@ package net.tanpeng.arithmetic.emeeasy;
 public class T9 {
 
     public static LinkedNode easy9(LinkedNode head) {
-        LinkedNode cur = head;
         LinkedNode pre = null;
-        LinkedNode next;
-        while (cur != null) {
-            next = cur.nextNode;
-            cur.nextNode = pre;
-            pre = cur;
-            cur = next;
+        while (head != null) {
+            LinkedNode next = head.nextNode;
+            head.nextNode = pre;
+            pre = head;
+            head = next;
         }
 
         return pre;
