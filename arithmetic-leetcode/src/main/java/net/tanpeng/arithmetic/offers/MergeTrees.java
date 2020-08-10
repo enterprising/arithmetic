@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 /**
  * 合并两个二叉树

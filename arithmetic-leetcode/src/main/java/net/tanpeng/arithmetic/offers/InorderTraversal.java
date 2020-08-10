@@ -1,21 +1,23 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 中序遍历
+ *
  * @author: peng.tan
- * @create: 2020/05/02 16:18
+ * @create: 2020/05/02 16:15
  */
-public class PostorderTraversal {
-    List<Integer> result = new ArrayList<>();
+public class InorderTraversal {
+    List<Integer> list = new ArrayList<>();
 
-    public List<Integer> postorderTraversal(TreeNode root) {
+    public List<Integer> inorderTraversal(TreeNode root) {
         if (root == null) {
-            return result;
+            return list;
         }
         dg(root);
-        return result;
+        return list;
     }
 
     private void dg(TreeNode root) {
@@ -23,7 +25,7 @@ public class PostorderTraversal {
             return;
         }
         dg(root.left);
+        list.add(root.val);
         dg(root.right);
-        result.add(root.val);
     }
 }

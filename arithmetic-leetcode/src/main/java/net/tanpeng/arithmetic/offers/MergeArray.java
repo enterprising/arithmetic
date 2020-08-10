@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 public class MergeArray {
     public static void merge(int[] A, int m, int[] B, int n) {

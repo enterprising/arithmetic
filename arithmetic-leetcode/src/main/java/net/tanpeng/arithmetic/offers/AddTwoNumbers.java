@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 /**
  * 两个链表逆序，相加。主要考虑进位，考虑链表的操作

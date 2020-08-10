@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 /**
  * Created by peng.tan on 2020/1/28.

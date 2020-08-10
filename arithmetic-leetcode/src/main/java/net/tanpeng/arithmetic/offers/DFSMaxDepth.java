@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 /**
  * 树的深度优先遍历。DFS。寻找二叉树的最大深度

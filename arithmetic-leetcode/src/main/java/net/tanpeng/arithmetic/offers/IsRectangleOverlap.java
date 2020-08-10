@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.arithmetic.offers;
 
 public class IsRectangleOverlap {
     public static boolean isRectangleOverlap(int[] rec1, int[] rec2) {

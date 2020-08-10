@@ -45,6 +45,7 @@ public class ReConstructBinaryTree {
 
     public static void main(String[] args) {
         int[] pre = new int[]{1, 2, 3, 4};
+        // 左闭右开
         int[] result = Arrays.copyOfRange(pre, 0, 3);
         System.out.println();
     }
