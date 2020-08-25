@@ -32,15 +32,15 @@ public class Quick {
     // 若遇到的元素大于 枢轴元素则i指针不动，只有j指针自增。此算法的时间复杂度为O(n),空间复杂度为O(1)。
     private static int partition(int[] a, int low, int high) {
         int pivot = a[high];
-        int i = low - 1;
+        int i = low;
         for (int j = low; j < high; j++) {
             if (a[j] <= pivot) {
-                i++;
                 SortUtil.exch(a, i, j);
+                i++;
             }
         }
-        SortUtil.exch(a, i + 1, high);
-        return i + 1;
+        SortUtil.exch(a, i, high);
+        return i;
     }
 
 
