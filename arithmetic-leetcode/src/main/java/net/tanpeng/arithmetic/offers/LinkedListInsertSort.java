@@ -7,6 +7,39 @@ package net.tanpeng.arithmetic.offers;
 public class LinkedListInsertSort {
 
 
+    public static ListNode insertionSortListDemo(ListNode head) {
+
+        ListNode h = new ListNode(-1);
+        h.next = head;
+
+        ListNode pre = h;
+        ListNode cur = head;
+        ListNode later = null;
+
+        while (cur != null) {
+            later = cur.next;
+            // 下一个的值比当前还小
+            if (later != null && later.val < cur.val) {
+                // 从头部开始遍历，遇到小的就往后挪
+                while (pre.next != null && pre.next.val < later.val) {
+                    pre = pre.next;
+                }
+
+                // 最重要的地方，交换
+                ListNode temp = pre.next;  // 下一个节点
+                pre.next = later;
+                cur = later;  // 这里是为了往下依次遍历
+                later.next = temp;
+
+                pre = h;
+            } else {
+                cur = cur.next;
+            }
+        }
+
+        return h.next;
+    }
+
     public static ListNode insertionSortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -59,43 +92,6 @@ public class LinkedListInsertSort {
         return h.next;
     }
 
-
-//    public static ListNode test(ListNode head) {
-//        if (head == null || head.next == null) {
-//            return head;
-//        }
-//        // 因为链表是单向的，所以有序的那个遍历，需要维持一个标识，永远都是指向最前面的那个节点
-//        ListNode h = new ListNode(-1);
-//        h.next = head;
-//        ListNode pre = h;
-//        ListNode cur = head;
-//        ListNode later;
-//        while (cur != null) {
-//            // 下一个节点
-//            later = cur.next;
-//            // 下一节点比当前还小
-//            if (later != null && later.val < cur.val) {
-//                // 寻找插入点，从pre开始遍历
-//                while (pre.next != null && pre.next.val < later.val) {
-//                    pre = pre.next;
-//                }
-//
-//                // 至此，应该找到需要交换的点了
-//                ListNode temp = pre.next;
-//                pre.next = later;
-//                // 中间插入这一步，主要是为了外面的大的循环，cur节点不能丢
-//                cur.next = later.next;
-//                later.next = temp;
-//
-//                // pre复位
-//                pre = h;
-//            } else {
-//                cur = later;
-//            }
-//        }
-//
-//        return h.next;
-//    }
 
     public static void main(String[] args) {
 
