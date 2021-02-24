@@ -2,6 +2,8 @@ package net.tanpeng.arithmetic.sort;
 
 /**
  * 冒泡排序
+ * 每次都是比较相邻的两个元素，每一轮把最小的冒泡到最前面
+ * 和选择排序有本质的不同，1、选择排序少了很多次交换的过程；2、选择排序是不稳定的，冒泡是稳定的
  */
 public class Bubble {
 

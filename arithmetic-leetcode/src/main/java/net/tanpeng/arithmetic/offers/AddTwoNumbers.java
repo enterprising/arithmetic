@@ -5,9 +5,9 @@ package net.tanpeng.arithmetic.offers;
  * Created by peng.tan on 2020/1/27.
  */
 public class AddTwoNumbers {
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = new ListNode(0);
-        ListNode head = result;
+    public static ListNodeCur addTwoNumbers(ListNodeCur l1, ListNodeCur l2) {
+        ListNodeCur result = new ListNodeCur(0);
+        ListNodeCur head = result;
         int sub = 0;
         while (l1 != null || l2 != null || sub != 0) {
             int item1 = l1 == null ? 0 : l1.val;
@@ -19,7 +19,7 @@ public class AddTwoNumbers {
             } else {
                 sub = 0;
             }
-            result.next = new ListNode(item);
+            result.next = new ListNodeCur(item);
             result = result.next;
             if (l1 != null) {
                 l1 = l1.next;
@@ -32,14 +32,14 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
-        ListNode l111 = new ListNode(3);
-        ListNode l11 = new ListNode(4);
-        ListNode l1 = new ListNode(2);
+        ListNodeCur l111 = new ListNodeCur(3);
+        ListNodeCur l11 = new ListNodeCur(4);
+        ListNodeCur l1 = new ListNodeCur(2);
         l11.next = l111;
         l1.next = l11;
-        ListNode l222 = new ListNode(4);
-        ListNode l22 = new ListNode(6);
-        ListNode l2 = new ListNode(5);
+        ListNodeCur l222 = new ListNodeCur(4);
+        ListNodeCur l22 = new ListNodeCur(6);
+        ListNodeCur l2 = new ListNodeCur(5);
         l22.next = l222;
         l2.next = l22;
         System.out.println();
@@ -48,11 +48,11 @@ public class AddTwoNumbers {
     }
 }
 
-class ListNode {
+class ListNodeCur {
     int val;
-    ListNode next;
+    ListNodeCur next;
 
-    ListNode(int x) {
+    ListNodeCur(int x) {
         val = x;
     }
 }
