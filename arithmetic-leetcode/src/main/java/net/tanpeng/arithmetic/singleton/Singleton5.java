@@ -7,7 +7,8 @@ package net.tanpeng.arithmetic.singleton;
  * <p>
  * 原理
  * 内部类，与外部类没有绑定关系，只有当内部类被调用时才会加载，所以做到了懒加载
- * static Singleton5 singleton5 = new Singleton5(); 这个由jvm来保证原子性，线程安全
+ * static Singleton5 singleton5 = new Singleton5();
+ * 这个由jvm来保证原子性，线程安全，因为static类型的变量只有第一次类加载的时候会被初始化。
  *
  * @author: peng.tan
  * @create: 2020/11/08 11:39
