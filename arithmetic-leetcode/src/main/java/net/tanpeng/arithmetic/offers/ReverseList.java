@@ -8,16 +8,15 @@ public class ReverseList {
         // 1->2->3->4
         // 4->3->2->1
         ListNode prev = null;
-        ListNode curr = head;
-        while (curr != null) {
+        while (head != null) {
             // 先记录下一个节点，因为当前节点会变化
-            ListNode nextNode = curr.next;
+            ListNode nextNode = head.next;
             // 将当前的下一个节点指向此前记录的prev节点，第一次prev为NULL
-            curr.next = prev;
+            head.next = prev;
             // 记录prev节点为当前节点，方便下一次使用
-            prev = curr;
+            prev = head;
             // 当前节点指向后面一个，表示往后移动了一个节点
-            curr = nextNode;
+            head = nextNode;
         }
         return prev;
     }
