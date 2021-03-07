@@ -24,4 +24,18 @@ public class TwoStackToQueue {
     public int pop() {
         return stack1.pop();
     }
+
+    /**
+     * Get the front element.
+     */
+    public int peek() {
+        return stack1.peek();
+    }
+
+    /**
+     * Returns whether the queue is empty.
+     */
+    public boolean empty() {
+        return stack1.isEmpty();
+    }
 }
