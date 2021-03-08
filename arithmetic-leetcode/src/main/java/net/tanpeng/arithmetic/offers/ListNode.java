@@ -5,10 +5,10 @@ package net.tanpeng.arithmetic.offers;
  * @create: 2020/05/04 20:57
  */
 public class ListNode {
-    int val;
-    ListNode next = null;
+    public int val;
+    public ListNode next = null;
 
-    ListNode(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 }
