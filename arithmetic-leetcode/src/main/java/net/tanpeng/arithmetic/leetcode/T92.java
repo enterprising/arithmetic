@@ -2,8 +2,6 @@ package net.tanpeng.arithmetic.leetcode;
 
 import net.tanpeng.arithmetic.offers.ListNode;
 
-import java.util.List;
-
 /**
  * 反转特定部分的反转链表
  * https://leetcode-cn.com/problems/reverse-linked-list-ii/
