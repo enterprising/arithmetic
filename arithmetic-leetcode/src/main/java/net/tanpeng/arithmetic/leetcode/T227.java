@@ -21,7 +21,7 @@ public class T227 {
             if (Character.isDigit(s.charAt(i))) {
                 num = num * 10 + s.charAt(i) - '0';
             }
-            if (!Character.isDigit(s.charAt(i))) {
+            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == s.length() - 1) {
                 switch (preSign) {
                     case '+':
                         stack.push(num);
