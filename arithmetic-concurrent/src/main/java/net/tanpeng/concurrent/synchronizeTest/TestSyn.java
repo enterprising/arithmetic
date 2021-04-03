@@ -12,7 +12,7 @@ public class TestSyn implements Runnable {
     static int count = 0;
 
     public void increase() {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             count++;
         }
     }
