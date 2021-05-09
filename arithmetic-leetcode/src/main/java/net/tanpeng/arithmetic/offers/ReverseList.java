@@ -1,5 +1,7 @@
 package net.tanpeng.arithmetic.offers;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class ReverseList {
@@ -27,7 +29,9 @@ public class ReverseList {
     public static ListNode reverseList2(ListNode head) {
         ListNode result = new ListNode(0);
         ListNode headResult = result;
-        Stack<Integer> stack = new Stack<>();
+//        Stack<Integer> stack = new Stack<>();
+        // 用deque+linkedlist来模拟栈
+        Deque<Integer> stack = new LinkedList<>();
         while (head != null) {
             stack.push(head.val);
             head = head.next;
