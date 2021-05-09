@@ -13,7 +13,7 @@ import java.util.List;
  * @create: 2021/03/08 22:11
  */
 public class T46 {
-    List<List<Integer>> result = new ArrayList<>();
+    static List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> permute(int[] nums) {
 
@@ -43,5 +43,13 @@ public class T46 {
             backtrack(nums, track);
             track.remove(track.size() - 1);
         }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{0,1};
+        new T46().permute(nums);
+
+        System.out.println(result);
+        System.out.println();
     }
 }
