@@ -16,7 +16,7 @@ public class Singleton2 {
 
     }
 
-    public synchronized Singleton2 getSingleton2() {
+    public synchronized static Singleton2 getSingleton2() {
         if (singleton2 == null) {
             singleton2 = new Singleton2();
         }

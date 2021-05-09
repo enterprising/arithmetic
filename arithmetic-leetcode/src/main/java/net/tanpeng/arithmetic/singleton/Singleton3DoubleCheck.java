@@ -16,13 +16,13 @@ package net.tanpeng.arithmetic.singleton;
  * @create: 2020/11/08 10:53
  */
 public class Singleton3DoubleCheck {
-    private volatile Singleton3DoubleCheck singleton3DoubleCheck = null;
+    private static volatile Singleton3DoubleCheck singleton3DoubleCheck = null;
 
     private Singleton3DoubleCheck() {
 
     }
 
-    public Singleton3DoubleCheck getSingleton3DoubleCheck() {
+    public static Singleton3DoubleCheck getSingleton3DoubleCheck() {
         if (singleton3DoubleCheck == null) {
             synchronized (Singleton3DoubleCheck.class) {
                 if (singleton3DoubleCheck == null) {

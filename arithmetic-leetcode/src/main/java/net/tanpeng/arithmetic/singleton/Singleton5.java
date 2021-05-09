@@ -23,7 +23,7 @@ public class Singleton5 {
 
     }
 
-    public Singleton5 getSingleton() {
+    public static Singleton5 getSingleton() {
         return Inner.singleton5;
     }
 }

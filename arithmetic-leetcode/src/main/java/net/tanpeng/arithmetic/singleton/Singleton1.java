@@ -23,7 +23,7 @@ public class Singleton1 {
 
     }
 
-    public Singleton1 getInstance() {
+    public static Singleton1 getInstance() {
         if (singleton1 == null) {
             singleton1 = new Singleton1();
         }
