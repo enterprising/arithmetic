@@ -1,4 +1,6 @@
-package net.tanpeng.arithmetic.offers;
+package net.tanpeng.arithmetic.tree;
+
+import net.tanpeng.arithmetic.offers.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,6 @@
-package net.tanpeng.arithmetic.offers;
+package net.tanpeng.arithmetic.tree;
+
+import net.tanpeng.arithmetic.offers.TreeNode;
 
 /**
  * 树的深度优先遍历。DFS。寻找二叉树的最大深度

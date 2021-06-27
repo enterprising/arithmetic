@@ -1,4 +1,6 @@
-package net.tanpeng.arithmetic.offers;
+package net.tanpeng.arithmetic.tree;
+
+import net.tanpeng.arithmetic.offers.TreeNode;
 
 /**
  * @author: peng.tan

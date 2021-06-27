@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.offers;
+package net.tanpeng.arithmetic.tree;
 
 import java.util.Stack;
 
