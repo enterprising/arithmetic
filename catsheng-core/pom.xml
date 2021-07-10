@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <jackson_version>2.9.8</jackson_version>
+        <jackson_version>2.9.10.7</jackson_version>
     </properties>
 
     <dependencies>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.3</version>
+            <version>2.9.10.7</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
