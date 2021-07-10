@@ -1,4 +1,4 @@
-package net.tanpeng.arithmetic.leetcode;
+package net.tanpeng.utils;
 
 /**
  * Created by peng.tan on 2021/5/9 10:33 下午
